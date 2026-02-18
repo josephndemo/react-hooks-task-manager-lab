@@ -1,55 +1,93 @@
-/* Global Styles */
-body {
-  font-family: 'Arial', sans-serif;
-  background-color: #f4f4f9;
+/* ===== Reset & Base ===== */
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --primary: #6366f1;
+  --primary-dark: #4f46e5;
+  --bg: #f4f6fb;
+  --card-bg: rgba(255, 255, 255, 0.7);
+  --text-dark: #1f2937;
+  --text-light: #6b7280;
+  --border: #e5e7eb;
+  --success: #22c55e;
+}
+
+body {
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+  background: linear-gradient(135deg, #e0e7ff, #f0f4ff);
+  min-height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: center;
-  height: 100vh;
+  padding: 40px 20px;
+  color: var(--text-dark);
 }
 
-.container {
-  background: white;
-  padding: 20px;
-  border-radius: 12px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-  width: 400px;
+/* ===== App Container ===== */
+#root {
+  width: 100%;
+  max-width: 600px;
+}
+
+h1 {
   text-align: center;
+  margin-bottom: 30px;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--primary-dark);
 }
 
-/* Form Styles */
-form {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  padding: 10px;
+/* ===== Card Layout ===== */
+form,
+.search-container,
+ul {
+  background: var(--card-bg);
+  backdrop-filter: blur(10px);
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  margin-bottom: 20px;
+  border: 1px solid var(--border);
 }
 
-input {
-  padding: 10px;
-  border: 2px solid #ddd;
-  border-radius: 8px;
-  font-size: 16px;
+/* ===== Inputs ===== */
+input[type="text"] {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  font-size: 0.95rem;
+  transition: 0.2s ease;
+  outline: none;
 }
 
+input[type="text"]:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+}
+
+/* ===== Buttons ===== */
 button {
-  padding: 10px;
-  background-color: #4CAF50;
-  color: white;
+  margin-top: 12px;
+  padding: 10px 16px;
+  border-radius: 10px;
   border: none;
-  border-radius: 8px;
   cursor: pointer;
-  font-size: 16px;
-  transition: background 0.3s;
+  font-weight: 500;
+  transition: 0.2s ease;
+  background-color: var(--primary);
+  color: white;
 }
 
 button:hover {
-  background-color: #45a049;
+  background-color: var(--primary-dark);
+  transform: translateY(-1px);
 }
 
-/* Task List */
+/* ===== Task List ===== */
 ul {
   list-style: none;
   padding: 0;
@@ -59,57 +97,45 @@ li {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px;
-  margin: 5px 0;
-  background: #fff;
-  border-radius: 8px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  padding: 12px 10px;
+  border-bottom: 1px solid var(--border);
+  transition: background 0.2s ease;
 }
 
-.completed {
-  text-decoration: line-through;
-  color: gray;
+li:last-child {
+  border-bottom: none;
 }
 
-.complete-btn {
-  background-color: #007bff;
-  color: white;
-  padding: 5px 10px;
-  border-radius: 6px;
-  cursor: pointer;
-  border: none;
-  transition: background 0.3s;
+li:hover {
+  background: rgba(99, 102, 241, 0.05);
 }
 
-.complete-btn:hover {
-  background-color: #0056b3;
+li span {
+  font-size: 0.95rem;
 }
 
-/* Search Bar */
-.search-container {
-  margin: 10px 0;
+li span[style*="line-through"] {
+  color: var(--text-light);
 }
 
-.search-container input {
-  width: 100%;
-  padding: 10px;
-  border-radius: 8px;
-  border: 2px solid #ddd;
-  font-size: 16px;
+/* ===== Complete Button Variant ===== */
+li button {
+  background-color: var(--success);
+  padding: 6px 12px;
+  font-size: 0.85rem;
 }
 
-/* Animations */
-@keyframes fade-in {
-  from {
-    opacity: 0;
-    transform: translateY(-5px);
+li button:hover {
+  background-color: #16a34a;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 500px) {
+  body {
+    padding: 20px 12px;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
 
-li {
-  animation: fade-in 0.3s ease-in-out;
+  h1 {
+    font-size: 1.6rem;
+  }
 }
